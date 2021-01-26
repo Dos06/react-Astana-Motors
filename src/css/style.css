@@ -1,0 +1,151 @@
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+#card1 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-01.jpg);
+}
+#card2 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-02.jpg);
+}
+#card3 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-03.jpg);
+}
+#card4 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-04.jpg);
+}
+#card5 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-05.jpg);
+}
+#card6 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-06.jpg);
+}
+#card7 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-07.jpg);
+}
+#card8 {
+  background-image: url(https://smartdata.tonytemplates.com/caleader/wp-content/uploads/2018/10/media02-img-08.jpg);
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none!important;
+}
+
+.white {
+  color: white;
+}
+
+.red {
+  color: #FB1047;
+}
+
+.red-hover:hover {
+  color: #FB1047;
+  transition: 0.5s;
+}
+
+.bg-red {
+  background-color: #FB1047;
+}
+
+.search {
+  background-color: #333333;
+}
+
+.search h4,
+.search p{
+  color: #ffffff;
+
+}
+
+.search select{
+  color: #818181;
+  border-radius: 0%;
+}
+
+.search button{
+border-radius: 0%;
+}
+
+.navbar-brand img {
+  max-width: 150px;
+}
+
+.nav-item a:hover {
+  color: #FB1047!important;
+  transition: 0.5s ease-in-out;
+}
+
+select:hover .select-option-remove {
+  display: none;
+}
+
+.intro img{
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
+.intro__text h1{
+  letter-spacing: .05em;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.intro__text h1:after{
+  background: linear-gradient(87deg, rgba(242,25,99,1) 1%, rgba(29,143,99,1) 100%);
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 2px;
+  left: 15%;
+  position: absolute;
+  transform: translate(-50%,0);
+  width: 150px;
+}
+
+.intro__text p{
+  color: #8A8A8A;
+  font-size: 1.2em;
+}
+
+.intro__text p span{
+  color: black;
+  font-weight: bold;
+}
+
+.btn-add-item {
+  width: 250px;
+  height: 60px;
+  font-size: 20px!important;
+}
+
+.types_vehicles li {
+  width: 20%;
+  /* height: 100%; */
+  height: 350px;
+}
+
+.types_vehicles li a {
+  color: white;
+}
+
+.types_vehicles li a:hover {
+  color: #FB1047;
+  transition: 0.5s ease-in-out;
+}
+
+.types_vehicles li a h5 {
+  margin: 2px;
+}
+
+.footer-top {
+  background-color: #263238;
+}
+
+.footer-bottom {
+  background-color: #1E282D;
+}
