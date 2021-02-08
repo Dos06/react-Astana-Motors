@@ -1,15 +1,13 @@
 import React from 'react';
 
-const users = [
-    {id: 1, login: 'dos', password: 'qweqwe'},
-    {id: 2, login: 'bos', password: 'qweqwe'},
-    {id: 3, login: 'box', password: 'qweqwe'}
-]
-
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {login: '', password: '', loggedIn: false};
+        this.state = {
+            login: '',
+            password: '',
+            loggedIn: false
+        };
         this.eventOnSubmit = this.eventOnSubmit.bind(this);
         this.eventOnLogin = this.eventOnLogin.bind(this);
         this.eventOnPassword = this.eventOnPassword.bind(this);
@@ -32,10 +30,10 @@ class Login extends React.Component {
         let found = false;
         let foundUser = null;
 
-        for (let i = 0; i < users.length; i++) {
-            if (users[i].login === this.state.login && users[i].password === this.state.password) {
+        for (let i = 0; i < this.state.users.length; i++) {
+            if (this.state.users[i].login === this.state.login && this.state.users[i].password === this.state.password) {
                 found = true;
-                foundUser = users[i];
+                foundUser = this.state.users[i];
                 this.setState({loggedIn: true});
                 break;
             }
@@ -67,6 +65,14 @@ class Login extends React.Component {
                         </div>
                         <button className="btn btn-dark btn-lg">SIGN IN</button>
                     </form>
+
+                    <div className="col-12 form-group mt-5">
+                        <label>REGISTRATION</label>
+                        {/*<input type="number" id='id' className="form-control my-2" placeholder='ID'/>*/}
+                        <input type="text" id='login' className="form-control my-2" placeholder='Login'/>
+                        <input type="password" id='password' className="form-control my-2" placeholder='Password'/>
+                        <button className="btn btn-dark btn-lg mt-2" onClick='addUser'>SIGN UP</button>
+                    </div>
                 </div>
             );
         }

@@ -5,16 +5,17 @@ import Header from "./components/Header/Header";
 import Items from "./components/Items/Items";
 import Login from "./components/Login/Login";
 
-function App() {
+function App(props) {
   return (
     <div>
       <Header/>
       <div className="row col-10 offset-1">
         <div className="col-3">
-            <Login/>
+            {/*<Login users={props.state.users}/>*/}
+            <Login users={props.state.users}/>
         </div>
         <div className="col-9">
-            <Items/>
+            <Items items={props.state.items}/>
         </div>
       </div>
     </div>
