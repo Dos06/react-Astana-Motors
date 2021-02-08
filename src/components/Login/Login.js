@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 class Login extends React.Component {
     constructor(props) {
@@ -66,13 +66,12 @@ class Login extends React.Component {
                         <button className="btn btn-dark btn-lg">SIGN IN</button>
                     </form>
 
-                    <div className="col-12 form-group mt-5">
+                    <form className="col-12 form-group mt-5">
                         <label>REGISTRATION</label>
-                        {/*<input type="number" id='id' className="form-control my-2" placeholder='ID'/>*/}
-                        <input type="text" id='login' className="form-control my-2" placeholder='Login'/>
+                        {/*<input type="text" id='login' className="form-control my-2" placeholder='Login' onChange={event => setUserLogin(event.target.value)}/>*/}
                         <input type="password" id='password' className="form-control my-2" placeholder='Password'/>
-                        <button className="btn btn-dark btn-lg mt-2" onClick='addUser'>SIGN UP</button>
-                    </div>
+                        <button className="btn btn-dark btn-lg mt-2">SIGN UP</button>
+                    </form>
                 </div>
             );
         }
