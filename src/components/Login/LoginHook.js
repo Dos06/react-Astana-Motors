@@ -1,66 +1,8 @@
 import React, {useState} from 'react';
-
-const User = (props) => {
-    return (
-        <div className="col-12 alert alert-secondary my-2">
-            <h4>ID: {props.id}</h4>
-            <p className='m-0'>Login: {props.login}</p>
-            <p className='m-0'>Password: {props.password}</p>
-        </div>
-    );
-}
+import User from './User/User';
 
 function LoginHook(props) {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         login: '',
-    //         password: '',
-    //         loggedIn: false
-    //     };
-    //     this.eventOnSubmit = this.eventOnSubmit.bind(this);
-    //     this.eventOnLogin = this.eventOnLogin.bind(this);
-    //     this.eventOnPassword = this.eventOnPassword.bind(this);
-    //     this.eventOnLogout = this.eventOnLogout.bind(this);
-    // };
-    //
-    // eventOnLogin(event) {
-    //     this.setState({login: event.target.value});
-    // };
-    //
-    // eventOnPassword(event) {
-    //     this.setState({password: event.target.value});
-    // };
-    //
-    // eventOnLogout(event) {
-    //     this.setState({loggedIn: false});
-    // };
-    //
-    // eventOnSubmit(event) {
-    //     let found = false;
-    //     let foundUser = null;
-    //
-    //     for (let i = 0; i < this.state.users.length; i++) {
-    //         if (this.state.users[i].login === this.state.login && this.state.users[i].password === this.state.password) {
-    //             found = true;
-    //             foundUser = this.state.users[i];
-    //             this.setState({loggedIn: true});
-    //             break;
-    //         }
-    //     }
-    //
-    //     if (found) {
-    //         alert("WELCOME " + foundUser.login);
-    //     }
-    //     else {
-    //         alert("FAILED");
-    //     }
-    //     event.preventDefault();
-    // };
 
-    const state = [
-        {loggedIn: false}
-    ];
     const [users, setUsers] = useState(
         [
             {id: 1, login: 'dos', password: 'qweqwe'},
@@ -73,49 +15,91 @@ function LoginHook(props) {
     const [userLogin, setUserLogin] = useState('')
     const [userPassword, setUserPassword] = useState('')
 
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [authLogin, setAuthLogin] = useState('')
+    const [authPassword, setAuthPassword] = useState('')
+    function logOut(event) {
+        setLoggedIn(false)
+    }
+    function authorize(event) {
+        let found = 0
+        let foundUser = null
+
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].login === authLogin && users[i].password === authPassword) {
+                found = true
+                foundUser = users[i]
+                setLoggedIn(true)
+                break
+            }
+        }
+
+        if (found) {
+            setAuthLogin('')
+            setAuthPassword('')
+            alert('WELCOME ' + foundUser.login)
+        }
+        else alert('NOT FOUND')
+        event.preventDefault()
+    }
+
     const addUser = event => {
         setUsers([
             {id: userId, login: userLogin, password: userPassword},
             ...users,
         ])
         setUserId(users[0].id + 2)
-        document.getElementById('login').value = '';
-        document.getElementById('password').value = '';
+        setUserLogin('')
+        setUserPassword('')
         event.preventDefault()
     }
 
 
-    // if (!this.state.loggedIn) {
-    if (false) {
+    if (!loggedIn) {
         return (
             <div className="row mt-5">
-                {/*<form className="col-12 mt-5" onSubmit={this.eventOnSubmit}>*/}
-                {/*    <div className="form-group">*/}
-                {/*        <label>LOGIN: {this.state.login}</label>*/}
-                {/*        <input type="text" className='form-control' value={this.state.login}*/}
-                {/*               onChange={this.eventOnLogin} required/>*/}
-                {/*    </div>*/}
-                {/*    <div className="form-group">*/}
-                {/*        <label>PASSWORD</label>*/}
-                {/*        <input type="password" className='form-control' value={this.state.password}*/}
-                {/*               onChange={this.eventOnPassword} required/>*/}
-                {/*    </div>*/}
-                {/*    <button className="btn btn-dark btn-lg">SIGN IN</button>*/}
-                {/*</form>*/}
+                <form className="col-12 mt-5" onSubmit={authorize}>
+                    <div className="form-group">
+                        <label>LOGIN: {authLogin}</label>
+                        <input type="text" className='form-control' value={authLogin} onChange={event => setAuthLogin(event.target.value)} required/>
+                    </div>
+                    <div className="form-group">
+                        <label>PASSWORD</label>
+                        <input type="password" className='form-control' value={authPassword} onChange={event => setAuthPassword(event.target.value)} required/>
+                    </div>
+                    <button className="btn btn-dark btn-lg">SIGN IN</button>
+                </form>
+
+                {/*<RegistrationForm/>*/}
+                <form className="col-12 form-group mt-5" onSubmit={addUser}>
+                    <label>REGISTRATION</label>
+                    <input type="text" id='login' className="form-control my-2" placeholder='Login' value={userLogin} onChange={event => setUserLogin(event.target.value)} required/>
+                    <input type="password" id='password' className="form-control my-2" placeholder='Password' value={userPassword} onChange={event => setUserPassword(event.target.value)} required/>
+                    <button className="btn btn-dark btn-lg mt-2">SIGN UP</button>
+
+                    <br/><br/>
+                    {users.reverse().map(u => <User id={u.id} login={u.login} password={u.password}/>)}
+                </form>
             </div>
         );
     }
     else {
         return (
-            <div className="row mt-5">
+            <div className='row mt-5'>
+                <div className='col-12'>
+                    <button type='button' className='btn btn-danger btn-lg' onClick={logOut}>LOG OUT</button>
+                </div>
+
+                {/*<RegistrationForm/>*/}
                 <form className="col-12 form-group mt-5" onSubmit={addUser}>
                     <label>REGISTRATION</label>
-                    <input type="text" id='login' className="form-control my-2" placeholder='Login' onChange={event => setUserLogin(event.target.value)} required/>
-                    <input type="password" id='password' className="form-control my-2" placeholder='Password' onChange={event => setUserPassword(event.target.value)} required/>
+                    <input type="text" id='login' className="form-control my-2" placeholder='Login' value={userLogin} onChange={event => setUserLogin(event.target.value)} required/>
+                    <input type="password" id='password' className="form-control my-2" placeholder='Password' value={userPassword} onChange={event => setUserPassword(event.target.value)} required/>
                     <button className="btn btn-dark btn-lg mt-2">SIGN UP</button>
-                </form>
 
-                {users.reverse().map(u => <User id={u.id} login={u.login} password={u.password}/>)}
+                    <br/><br/>
+                    {users.reverse().map(u => <User id={u.id} login={u.login} password={u.password}/>)}
+                </form>
             </div>
         );
     }

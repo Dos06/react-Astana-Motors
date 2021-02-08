@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 let state = {
     items: [
@@ -14,27 +14,5 @@ let state = {
         {id: 3, login: 'box', password: 'qweqwe'}
     ]
 }
-
-// const [users, setUsers] = useState(
-//     [
-//         {id: 1, login: 'dos', password: 'qweqwe'},
-//         {id: 2, login: 'bos', password: 'qweqwe'},
-//         {id: 3, login: 'box', password: 'qweqwe'}
-//     ]
-// )
-//
-// const [userLogin, setUserLogin] = useState('')
-// const [userPassword, setUserPassword] = useState('')
-//
-// const addUser = event => {
-//     if (event.key === 'Enter') {
-//         setUsers(
-//             ...users,
-//             {id: users[users.length - 1].id + 1, login: userLogin, password: userPassword}
-//         )
-//         setUserLogin('')
-//         setUserPassword('')
-//     }
-// }
 
 export default state;
