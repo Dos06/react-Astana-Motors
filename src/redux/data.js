@@ -12,7 +12,41 @@ let state = {
         {id: 1, login: 'dos', password: 'qweqwe'},
         {id: 2, login: 'bos', password: 'qweqwe'},
         {id: 3, login: 'box', password: 'qweqwe'}
-    ]
+    ],
+
+    PostsPage: {
+        categories: [
+            {id: 1, name: 'Sport'},
+            {id: 2, name: 'IT'},
+            {id: 3, name: 'Business'},
+        ],
+
+        posts: [
+            {
+                date: new Date().toUTCString(),
+                category: 3,
+                title: 'Covid vaccination',
+                src: 'https://news-decoder.com/wp-content/uploads/2021/02/Poor-nations-lag-in-COVID-vaccination-posing-global-peril-3-e1612520518894.png',
+                content: 'COVID-19 vaccination programs are moving slowly in poor nations, threatening the world’s health and raising risks for rich countries’ economies.'
+            },
+            {
+                date: new Date().toUTCString(),
+                category: 3,
+                title: 'Trump’s “Big Lie”',
+                src: 'https://news-decoder.com/wp-content/uploads/2021/02/Trumps-Big-Lie-stirs-a-revolt-and-mars-US-standing-1-e1612257624802.jpg',
+                content: 'Donald Trump’s “Big Lie” — that Joe Biden stole the U.S. presidential election — has stoked a domestic revolt and tarnished America’s global stature.'
+            },
+            {
+                date: new Date().toUTCString(),
+                category: 2,
+                title: 'Content licensing',
+                src: 'https://news-decoder.com/wp-content/uploads/2020/08/content-licensing-news-decoder-home.jpg',
+                content: 'Interested in using our media content to engage your audience? We license our content.'
+            },
+        ]
+    }
+
+
 }
 
 export default state;

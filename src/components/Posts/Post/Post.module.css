@@ -1,0 +1,10 @@
+.img {
+    object-fit: cover;
+    object-position: center;
+    width: 180px;
+    height: 200px;
+}
+
+.card {
+    max-width: 540px;
+}

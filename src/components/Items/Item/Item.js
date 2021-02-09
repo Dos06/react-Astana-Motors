@@ -37,7 +37,7 @@ class Item extends React.Component {
                     <img src={this.state.src} className={"card-img-top " + s.cardImg} alt="img"/>
                     <div className="card-body">
                         <h5 className="card-title">{this.state.name}</h5>
-                        <button type='button' className="btn btn-success" onClick={this.eventOnAdd}>+ ADD TO CART</button>
+                        <button type='button' className="btn btn-dark" onClick={this.eventOnAdd}>+ ADD TO CART</button>
                     </div>
                 </div>
             </div>
