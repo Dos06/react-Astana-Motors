@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Post from "./Post/Post";
 import {NavLink} from "react-router-dom";
 
@@ -14,11 +14,22 @@ function Posts(props) {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
     const [link, setLink] = useState('')
-    const [selectedCategory, setSelectedCategory] = useState(0)
     const [tempPosts, setTempPosts] = useState(posts)
 
+    useEffect(() => {
+        const raw = localStorage.getItem('posts') || []
+        setPosts(JSON.parse(raw))
+    }, [])
+    useEffect(() => {
+        const raw = localStorage.getItem('posts') || []
+        setTempPosts(JSON.parse(raw))
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('posts', JSON.stringify(posts))
+    }, [posts])
+
     function selectCategory(id) {
-        setSelectedCategory(id)
         setTempPosts(posts.filter(function(i) {
             return i.category === id
         }))
@@ -35,6 +46,17 @@ function Posts(props) {
             },
             ...posts,
         ])
+        setTempPosts([
+            {
+                date: new Date().toUTCString(),
+                category: 1,
+                title: title,
+                src: link,
+                content: content
+            },
+            ...tempPosts,
+        ])
+        localStorage.setItem('posts', JSON.stringify(posts))
         setTitle('')
         setContent('')
         setLink('')
